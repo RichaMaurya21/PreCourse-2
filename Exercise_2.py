@@ -2,13 +2,23 @@
   
 # give you explanation for the approach
 def partition(arr,low,high):
-  
-  
+    pivot = arr[high]
+    i = low - 1
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[i+1],arr[high] = arr[high], arr[i+1]
+    return i + 1
     #write your code here
   
 
 # Function to do Quick sort 
 def quickSort(arr,low,high): 
+    if low < high:
+        part = partition(arr,low,high)
+        quickSort(arr,low,part-1)
+        quickSort(arr,part+1,high)
     
     #write your code here
   
